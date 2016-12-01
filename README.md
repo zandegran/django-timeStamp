@@ -21,8 +21,12 @@ and
 
 run `manage.py migrate` to install needed database tables
 
-#####Required setting 
-`MAX_TIMESTAMPS = 5` in settings.py
-5 is the maximum number of timestamps stored per user
+#####Optional setting 
+
+`MAX_TIMESTAMPS = 7` in settings.py
+
+7 is the maximum number of timestamps stored per user
+
+5 is the default
 
 :smile:
