@@ -1,8 +1,9 @@
+
 import os
 
 from setuptools import setup
 
-from registration import get_version
+from timeStamps import get_version
 
 
 # Compile the list of packages available, because distutils doesn't have
