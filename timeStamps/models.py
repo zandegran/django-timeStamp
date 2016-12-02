@@ -12,11 +12,10 @@ from django.contrib.auth.signals import user_logged_in
 class timeStampManager(models.Manager):
     def create_timestamp(self, user):
         maxStamps=settings.MAX_TIMESTAMPS if settings.MAX_TIMESTAMPS else 5
-        
         logintime_list=TimeStamp.objects.filter(user=user).order_by('time_stamp')
-    	if len(logintime_list) >= maxStamps:
-    		for index in range(len(logintime_list)-maxStamps+1):
-    			logintime_list[index].delete()
+        if len(logintime_list) >= maxStamps:
+            for index in range(len(logintime_list)-maxStamps+1):
+                logintime_list[index].delete()
         ts= self.create(time_stamp=timezone.now(),user=user)
         return ts
 
