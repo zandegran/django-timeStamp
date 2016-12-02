@@ -1,8 +1,11 @@
+
+[![Product](https://travis-ci.org/zandegran/django-timeStamp.svg?branch=master)](https://travis-ci.org/zandegran/django-timeStamp)
+
 timeStamps
 ==========
 
 
-#### A library to keep track of user login times in Django
+#### A simple library to keep track of user login times in Django
 
 ###Installation
 
