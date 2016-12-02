@@ -24,5 +24,15 @@ class FilterUserAdmin(admin.ModelAdmin):
 class TimeStampAdmin(FilterUserAdmin):
     list_display = ('time_stamp','user')
     list_filter = ['user']
+    def has_add_permission(self, request):
+        return False
+    def get_readonly_fields(self, request, obj=None):
+        if obj: # editing an existing object
+            return self.readonly_fields + ('time_stamp', 'user')
+        return self.readonly_fields
+    def has_delete_permission(self, request, obj=None):
+        #Disable delete
+        return False
+
 
 admin.site.register(TimeStamp,TimeStampAdmin)
