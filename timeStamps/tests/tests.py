@@ -28,3 +28,10 @@ class TimeStampModelTests(TestCase):
         self.client.logout()
         logintime_list=TimeStamp.objects.filter(user=self.user)
         self.assertIs( len(logintime_list), 1)
+
+    def testUserDeletion(self):
+        self.failUnlessEqual(self.client.login(username=self.user.username,password='top_secret'),True)
+        self.client.logout()
+        self.user.delete()
+        logintime_list=TimeStamp.objects.filter(user=self.user)
+        self.assertIs( len(logintime_list), 0)

@@ -62,7 +62,6 @@ SETTINGS_DICT = {
 
 
 def run_tests():
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings'
     # Making Django run this way is a two-step process. First, call
     # settings.configure() to give Django settings to work with:
     from django.conf import settings

@@ -1,5 +1,6 @@
 
 [![Product](https://travis-ci.org/zandegran/django-timeStamp.svg?branch=master)](https://travis-ci.org/zandegran/django-timeStamp)
+![License](https://img.shields.io/dub/l/vibe-d.svg)
 
 timeStamps
 ==========
