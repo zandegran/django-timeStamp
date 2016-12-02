@@ -1,3 +1,12 @@
+
+"""
+timeStamps is a simple library to save the login times of users
+
+Instructions on how to use it can be found at https://github.com/zandegran/django-timeStamp
+"""
+__author__ =  'Ansel Zandegran'
+__version__=  '1.1'
+__license__=  'MIT'
 VERSION = (1, 1, 0, 'final', 0)
 
 

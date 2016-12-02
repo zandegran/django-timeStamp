@@ -5,6 +5,8 @@ required for tests to execute.
 Re-use at your own risk: many Django applications will require
 different settings and/or templates to run their tests.
 
+.. seealso:: :'.tests/tests.py'
+
 """
 
 import os
@@ -18,7 +20,7 @@ sys.path.insert(0, APP_DIR)
 
 # Minimum settings required for the app's tests.
 SETTINGS_DICT = {
-    'MAX_TIMESTAMPS': 7,
+    'MAX_TIMESTAMPS': 7, # Setting for test
     'BASE_DIR': APP_DIR,
     'INSTALLED_APPS': (
         'django.contrib.auth',

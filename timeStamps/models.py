@@ -7,24 +7,27 @@ from django.utils import timezone
 from django.conf import settings
 
 from django.contrib.auth.signals import user_logged_in
-# Create your models here.
+
 
 class timeStampManager(models.Manager):
     def create_timestamp(self, user):
-        maxStamps=settings.MAX_TIMESTAMPS if settings.MAX_TIMESTAMPS else 5
+        # Tries to get value of MAX_TIMESTAMPS from settings
+        # and if it does not xist assign the value of 5
+        # This is equivalent of   maxStamps=settings.MAX_TIMESTAMPS if hasattr(settings.MAX_TIMESTAMPS) else 5
+        maxStamps=getattr(settings, 'MAX_TIMESTAMPS', 5)
         logintime_list=TimeStamp.objects.filter(user=user).order_by('time_stamp')
         if len(logintime_list) >= maxStamps:
-            for index in range(len(logintime_list)-maxStamps+1):
+            for index in range(len(logintime_list)-maxStamps+1): # Delete on more than the max timeStamps allowed. This also creates room for the new one  
                 logintime_list[index].delete()
-        ts= self.create(time_stamp=timezone.now(),user=user)
+        ts= self.create(time_stamp=timezone.now(),user=user)  # Create a new entry
         return ts
-
+# The only mode used is here.
 class TimeStamp(models.Model):
 	user=models.ForeignKey(User)
 	time_stamp = models.DateTimeField('Logged in')
-	objects=timeStampManager()
+	objects=timeStampManager()  # Object used for creation
 
 def addToStorage(sender, user, request, **kwargs):
-     TimeStamp.objects.create_timestamp(user)
+     TimeStamp.objects.create_timestamp(user)  # Adds the timestamp in the database
 
-user_logged_in.connect(addToStorage)
+user_logged_in.connect(addToStorage) # Called when ever a user logs in 
