@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.client import Client
 from django.contrib.auth.models import AnonymousUser, User
 from django.conf import settings
-from .models import TimeStamp
+from ..models import TimeStamp
 import datetime
 from django.utils import timezone
 
