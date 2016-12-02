@@ -29,7 +29,7 @@ for dirpath, dirnames, filenames in os.walk('timeStamps'):
             data_files.append(os.path.join(prefix, f))
 
 
-setup(name='django-timeStamps',
+setup(name='django-timeStamp',
       zip_safe=False,  # eggs are the devil.
       version=get_version().replace(' ', '-'),
       description='An extensible timeStamp application for Django',
@@ -39,6 +39,7 @@ setup(name='django-timeStamps',
       package_dir={'timeStamps': 'timeStamps'},
       packages=packages,
       package_data={'timeStamps': data_files},
+      test_suite='timeStamps.runtests.run_tests',
       classifiers=[
           'Development Status :: 5 - Production/Stable',
           'Environment :: Web Environment',
